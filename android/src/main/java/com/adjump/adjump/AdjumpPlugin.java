@@ -10,12 +10,11 @@ import io.flutter.plugin.common.MethodChannel.Result;
 
 import android.app.Activity;
 import android.util.Log;
-import android.content.Intent;
 
 import java.util.HashMap;
 import java.util.Objects;
 
-import io.adjump.adjump;
+import io.adjump.offerwall.AdJump;
 
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
@@ -29,7 +28,7 @@ public class AdjumpPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
     private static AdjumpPlugin instance;
     private static Activity activityInstance;
 
-    private adjump adjumpInstance;
+    private AdJump adjumpInstance;
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
@@ -70,9 +69,9 @@ public class AdjumpPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
                 String userId = Objects.requireNonNull(args.get("userId")).toString();
 
                 // Initialize the SDK with the provided parameters
-                adjumpInstance = new adjump(activityInstance.getApplicationContext(), accountId, appId, userId);
+                adjumpInstance = new AdJump(activityInstance.getApplicationContext(), accountId, appId, userId);
 
-                adjumpInstance.initialize(new adjump.InitialisationListener() {
+                adjumpInstance.initialize(new AdJump.InitialisationListener() {
                     @Override
                     public void onInitialisationSuccess() {
                         Log.i(TAG, "SDK Initialized Successfully");
