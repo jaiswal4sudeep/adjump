@@ -20,9 +20,9 @@ class _MyAppState extends State<MyApp> {
   Future<void> _initSDK() async {
     try {
       await _adjumpPlugin.initSDK(
-        accountId: '59150',
-        appId: '755343',
-        userId: '123456789',
+        accountId: '<ACCOUNT_ID>',
+        appId: '<APP_ID>',
+        userId: '<USER_ID>',
       );
       log('SDK Initialized Successfully');
     } catch (e) {
